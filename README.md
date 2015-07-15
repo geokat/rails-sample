@@ -1,7 +1,7 @@
 Intention
 =======
 
-This intention of this project is to act as a playground for Chimp candidates to submit their coding samples and projects to. If you have any questions about anything please fire them towards [chris@chimp.net](mailto:chris@chimp.net). 
+This intention of this project is to act as a playground for Chimp candidates to submit their coding samples and projects to. If you have any questions about anything please fire them towards [harrison@chimp.net](mailto:harrison@chimp.net). 
 
 Requirements - Details
 =======
