@@ -18,12 +18,37 @@ Please fill in the placeholder sections below once completed with all necessary 
 
 How To Run
 =======
-Details here.
+This is a Rails 4 web app. You can run it using your system's ruby/bundler or docker (if you don't have ruby installed).
+
+To run with your system's ruby toolchain, `cd` to the web app directory and run:
+
+```bash
+bundle install
+bundle exec rake db:setup
+bundle exec rake test --verbose
+bundle exec rails server --binding 0.0.0.0
+```
+
+To run using docker, `cd` to the web app directory and run:
+
+```bash
+docker build -t geokat .
+docker run -it -p 3000:3000 geokat
+```
+
+In both cases the running app will listen on port 3000.
 
 How To Test
 =======
-Fill me in.
+To see the HTML snippet for a group, click on the HTML link in the group's row.
+To run the test suite, run `bnndle exec rake test --verbose`.
 
 Other Info
 =======
-Please justify any interesting choices or decisions you made here.
+(Please justify any interesting choices or decisions you made here.)
+
+I used JSONP for cross-origin sharing. Ajax wouldn't work because of the same origin policy.
+
+The app returns padded JSON when JSON request includes a callback query parameter (e.g. `http://localhost:3000/groups/1.json?callback=cbFunc`). To this end, I included an `after_action` filter in the Groups controller (https://goo.gl/uioD1t). I also wanted to make sure that the server handles errors for JSONP calls gracefully--always returning 200 OK and including the error in the padded JSON response. To achieve that, I use an `around_action` filter (https://goo.gl/36pwpu). I also included functional tests for such calls (https://goo.gl/I8gDNd).
+
+I used `rails generate scaffold` to create a basic CRUD app. I used Bootstrap for the UI.
