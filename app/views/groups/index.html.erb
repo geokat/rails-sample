@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Groups</h1>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Balance</th>
+      <th>Private</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <td><%= group.id %></td>
+        <td><%= group.name %></td>
+        <td><%= group.balance %></td>
+        <td><input type="checkbox" disabled <%= "checked" if group.private %>></td>
+        <td><%= render 'html', group: group %></td>
+        <td><%= link_to('Edit', edit_group_path(group)) %></td>
+        <td><%= link_to('Delete', group, method: :delete, data: {confirm: 'Are you sure?'}) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to new_group_path do %>
+  <i class="glyphicon glyphicon-plus"></i> New Group
+<% end %>

@@ -1,0 +1,41 @@
+<% html_text = <<END
+  <p>
+    Name: <span id="name-chimp-#{group.id}"></span><br />
+    Balance: <span id="balance-chimp-#{group.id}"></span>
+  </p>
+  <script>
+    if(typeof window.console == 'undefined') {
+        window.console = {log: function (msg) {}};
+    }
+    function groupCallback(data) {
+      if(data.hasOwnProperty('error')) {
+        alert('An error occurred while trying to retrieve group data.');
+        console.log('Server error: ' + data.error);
+        throw 'Unexpected error';
+      }
+      document.getElementById("name-chimp-#{group.id}").innerHTML = data.name;
+      document.getElementById("balance-chimp-#{group.id}").innerHTML = data.balance;
+    }
+  </script>
+  <script src="#{request.protocol}#{request.host_with_port}/groups/#{group.id}.json?callback=groupCallback"></script>
+END
+%>
+
+<a href="#" role="button" class="btn-link no-outline" data-toggle="modal" data-target="#group-<%= group.id %>-html">HTML</a>
+
+<!-- Modal -->
+<div class="modal fade" id="group-<%= group.id %>-html" tabindex="-1" role="dialog" aria-labelledby="group-<%= group.id %>-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="group-<%= group.id %>-html">HTML code to copy</h4>
+      </div>
+      <div class="modal-body">
+        <%= html_text %>
+      </div>
+      <div class="modal-footer">
+        <a href="#" role="button" class="btn-link" data-dismiss="modal">Close</a>
+      </div>
+    </div>
+  </div>
+</div>
