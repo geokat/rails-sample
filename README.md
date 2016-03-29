@@ -1,12 +1,7 @@
-Intention
+Requirements
 =======
 
-This intention of this project is to act as a playground for Chimp candidates to submit their coding samples and projects to. If you have any questions about anything please fire them towards [harrison@chimp.net](mailto:harrison@chimp.net). 
-
-Requirements - Details
-=======
-
-Please create a website. This website can be contructed in the language of your choosing. 
+Please create a website. This website can be contructed in the language of your choosing.
 
 Please import the file "data.csv" (located in the root of this project) into a database. This dataset will be used as the source sample data for the project. Each line-item in the csv represents a single *Group* object.
 
