@@ -49,6 +49,6 @@ Other Info
 
 I used JSONP for cross-origin sharing. Ajax wouldn't work because of the same origin policy.
 
-The app returns padded JSON when JSON request includes a callback query parameter (e.g. `http://localhost:3000/groups/1.json?callback=cbFunc`). To this end, I included an `after_action` filter in the Groups controller (https://goo.gl/uioD1t). I also wanted to make sure that the server handles errors for JSONP calls gracefully--always returning 200 OK and including the error in the padded JSON response. To achieve that, I use an `around_action` filter (https://goo.gl/36pwpu). I also included functional tests for such calls (https://goo.gl/I8gDNd).
+The app returns padded JSON when JSON request includes a callback query parameter (e.g. `http://localhost:3000/groups/1.json?callback=cbFunc`). To this end, I included an `after_action` filter in the Groups controller (https://goo.gl/PkaqmW). I also wanted to make sure that the server handles errors for JSONP calls gracefully--always returning 200 OK and including the error in the padded JSON response. To achieve that, I use an `around_action` filter (https://goo.gl/auT7Ka). I also included functional tests for such calls (https://goo.gl/xeAnhv).
 
 I used `rails generate scaffold` to create a basic CRUD app. I used Bootstrap for the UI.
